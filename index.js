@@ -33,7 +33,6 @@ module.exports = Cooldown;
  * @return {Boolean} false if during cooldown period, else true.
  */
 Cooldown.prototype.fire = function fire() {
-  var self = this;
   if (this._ready) {
     this._ready = false;
     this._lastRun = process.hrtime();
