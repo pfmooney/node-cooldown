@@ -1,6 +1,6 @@
 {
   "name": "cooldown",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "Cooldown timer for rate-limiting events",
   "main": "index.js",
   "keywords": [
