@@ -1,0 +1,8 @@
+.gitmodules
+.npmignore
+Makefile
+deps
+test
+tools
+coverage
+*.tgz
