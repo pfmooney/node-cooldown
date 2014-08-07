@@ -15,7 +15,7 @@ reset the cooldown and allow 'spam' to succeed immediately after.  Entering
 listener will automatically print when the timer is off cooldown.
 
 ```javascript
-var Cooldown = require('./index');
+var Cooldown = require('cooldown');
 var readline = require('readline');
 
 var rl = readline.createInterface({
