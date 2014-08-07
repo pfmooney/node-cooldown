@@ -2,6 +2,10 @@
 
 Timer mechanism to limit place upper bound on rate of events.
 
+## Installation
+
+    npm install cooldown
+
 ## Example
 
 This example reads lines of text from stdin.  When 'spam' is entered, it will
@@ -47,9 +51,45 @@ rl.on('line', function (line) {
 });
 ```
 
-## Installation
+## API
 
-    npm install cooldown
+### Class Cooldown
+
+A cooldown timer with two states:
+
+- ready: available to be fired
+- on-cooldown: fired and waiting to become ready again
+
+#### new Cooldown(timeout)
+
+- timeout: cooldown timeout duration (in ms)
+
+#### cooldown.fire()
+
+Return true if the timer was ready (and puts it on-cooldown).
+
+#### cooldown.reset(noEmit)
+
+If timer is on-cooldown, reset it back to ready.
+
+- noEmit: do not emit 'ready' event if timer was on-cooldown
+
+#### cooldown.destroy()
+
+Clear any timeouts and set timer to on-cooldown.
+It will never enter the 'ready' state unless it is reset.
+
+#### Property: ready
+
+Contains true if the timer is off cooldown and available to fire, else false.
+
+#### Event: 'ready'
+
+Emitted whenever the timer comes back off cooldown.
+
+#### Event: 'cooldown'
+
+Emitted whenever the timer goes on cooldown.
 
 ## License
 
