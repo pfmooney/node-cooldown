@@ -1,6 +1,6 @@
 # Cooldown
 
-Timer mechanism to limit place upper bound on rate of events.
+Timer mechanism to place upper bound on rate of events.
 
 ## Installation
 
@@ -87,13 +87,15 @@ Contains true if the timer is off cooldown and available to fire, else false.
 
 Emitted whenever the timer comes back off cooldown.
 
+- blocked: True if attempts were made to fire timer during cooldown period
+
 #### Event: 'cooldown'
 
 Emitted whenever the timer goes on cooldown.
 
 ## License
 
-BSD
+MIT
 
 
 ## Bugs

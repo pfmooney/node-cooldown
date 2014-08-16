@@ -35,11 +35,13 @@ module.exports = Cooldown;
 Cooldown.prototype.fire = function fire() {
   if (this._ready) {
     this._ready = false;
+    this._blocked = false;
     this._lastRun = process.hrtime();
     this._checkTimer(true);
     this.emit('cooldown');
     return true;
   }
+  this._blocked = true;
   return false;
 };
 
@@ -54,7 +56,7 @@ Cooldown.prototype.reset = function reset(noEmit) {
     this._timer = null;
     this._ready = true;
     if (!noEmit) {
-      this.emit('ready');
+      this.emit('ready', false);
     }
   }
 };
@@ -86,7 +88,7 @@ Cooldown.prototype._checkTimer = function _checkTimer(initial) {
   if (msElapsed >= this._timeout && !initial) {
     this._ready = true;
     this._timer = null;
-    this.emit('ready');
+    this.emit('ready', this._blocked);
   } else {
     // It's not _quite_ time yet
     this._timer = setTimeout(this._checkTimer.bind(this),

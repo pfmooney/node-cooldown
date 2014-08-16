@@ -1,6 +1,6 @@
 {
   "name": "cooldown",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Cooldown timer for rate-limiting events",
   "main": "index.js",
   "keywords": [
@@ -8,7 +8,15 @@
     "timer"
   ],
   "author": "Patrick Mooney <patrick.f.mooney@gmail.com>",
-  "license": "BSD",
+  "license": "MIT",
+  "licenses": [{
+    "type": "MIT",
+    "url": "https://github.com/pfmooney/node-cooldown/raw/master/LICENSE"
+  }],
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/pfmooney/node-cooldown.git"
+  },
   "dependencies": {
     "assert-plus": "^0.1.5"
   },

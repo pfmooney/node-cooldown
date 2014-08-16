@@ -86,6 +86,27 @@ test('events', function (t) {
   t.ok(cd.fire(), 'start');
 });
 
+test('events - ready (not blocked)', function (t) {
+  cd = new Cooldown(TIMEOUT);
+  cd.once('ready', function (blocked) {
+    t.equal(blocked, false);
+    t.end();
+  });
+  // only fire once
+  t.ok(cd.fire());
+});
+
+test('events - ready (blocked)', function (t) {
+  cd = new Cooldown(TIMEOUT);
+  cd.once('ready', function (blocked) {
+    t.equal(blocked, true);
+    t.end();
+  });
+  // fire twice so once is blocked
+  t.ok(cd.fire());
+  t.notOk(cd.fire());
+});
+
 test('reset', function (t) {
   cd = new Cooldown(TIMEOUT);
 
